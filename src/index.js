@@ -8,7 +8,8 @@ const app = express();
 
 mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-3ablg.mongodb.net/week10', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 });
 
 //O express precisa usar o json() para entender que as requisições estão sendo efetivamente feitas em JSON.
