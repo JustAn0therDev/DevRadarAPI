@@ -10,7 +10,7 @@ var devController = {
         let dev = await Dev.findOne({ github_username });
         
         if(dev) {
-            res.json({ success: false, message: 'Dev already exists in the database.' });
+            res.json({ success: false, message: 'Dev already exists in the database.' }).status(400);
             return false;
         }
         
@@ -35,7 +35,7 @@ var devController = {
             name, 
             github_username,
             avatar_url,
-            bio,
+            biography: bio,
             techs: techsArray,
             location
         });
@@ -56,7 +56,7 @@ var devController = {
             return false;
         }
 
-        const { name = dev.name, techs = dev.techs, avatar_url = dev.avatar_url } = req.body;
+        const { name = dev.name, techs = dev.techs, avatar_url = dev.avatar_url, biography = dev.biography } = req.body;
         
         let techsArray = [];
         
@@ -68,6 +68,7 @@ var devController = {
             {
                 name,
                 avatar_url,
+                biography,
                 techs: techsArray
             });
 
