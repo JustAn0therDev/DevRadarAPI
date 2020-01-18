@@ -1,6 +1,7 @@
 import axios from "axios";
 import Dev from '../models/Dev';
 import parseStringAsArray from '../utils/parseStringAsArray';
+import { findConnections, sendMessage } from '../websocket';
 
 //index, show, store, update, destroy
 
@@ -39,6 +40,13 @@ var devController = {
             techs: techsArray,
             location
         });
+
+        const sendSocketMessageTo = findConnections(
+            { latitude, longitude },
+            techsArray
+            );
+            
+            sendMessage(sendSocketMessageTo, 'new-dev', dev);
     
         res.json({ success: true, message: "Dev successfully created!", devData: dev });
     },

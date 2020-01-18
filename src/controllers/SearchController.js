@@ -8,7 +8,7 @@ var searchController = {
 
         const techsArray = parseStringAsArray(techs, ',');
 
-        const dev = await Dev.find({
+        const devs = await Dev.find({
             techs: {
                 $in: techsArray
             },
@@ -23,7 +23,7 @@ var searchController = {
             }
         })
 
-        res.json({ success: true, message: 'user retrieved successfully', dev });
+        res.json({ success: true, message: 'user retrieved successfully', devs });
     }
 }
 
