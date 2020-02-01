@@ -4,7 +4,7 @@ var _bodyparser = require('body-parser'); var _bodyparser2 = _interopRequireDefa
 var _mongoose = require('mongoose'); var _mongoose2 = _interopRequireDefault(_mongoose);
 var _http = require('http'); var _http2 = _interopRequireDefault(_http);
 var _routes = require('./routes'); var _routes2 = _interopRequireDefault(_routes);
-var _websocket = require('./websocket'); var _websocket2 = _interopRequireDefault(_websocket);
+var _websocket = require('./websocket');
 
 const app = _express2.default.call(void 0, );
 
@@ -12,7 +12,7 @@ const app = _express2.default.call(void 0, );
 const server = _http2.default.Server(app);
 
 //e configuramos o WebSocket passando o proprio servidor.
-_websocket2.default.call(void 0, server);
+_websocket.setupWebSocket.call(void 0, server);
 
 _mongoose2.default.connect('mongodb+srv://omnistack:omnistack@cluster0-3ablg.mongodb.net/week10', {
     useNewUrlParser: true,
